@@ -1,2 +1,5 @@
-# collin-county-real-estate
-Determining the best real estate properties to purchase in Collin County
+# Collin County Real Estate Analysis
+Project for a client. Using Pandas to figure out which properties in Collin County have the best purchasing prospects.
+
+## Data
+Each owner information record is stored as an 847 character string. This string can be sliced for each piece of information and stored in a data frame. The main data files won't be uploaded to protect privacy.
