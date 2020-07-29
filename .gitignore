@@ -1,5 +1,6 @@
-data/raw/owner*
-data/csv
+data/raw_txt/owner*
+data/raw_csv
+data/filtered_csv
 *.pyc
 tempCodeRunnerFile.py
 .DS_Store
