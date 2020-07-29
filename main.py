@@ -29,8 +29,8 @@ except:
 # write dataframes to CSV files
 print("Loading delinquent_owner_info.csv...")
 df_delinquent_owners.to_csv('data/filtered_csv/delinquent_owner_info.csv', index=False)
-print("Success\n")
+print("Success!\n")
 
 print("Loading delinquent_owner_taxes.csv...")
 df_delinquent_taxes.to_csv('data/filtered_csv/delinquent_owner_taxes.csv', index=False)
-print("Success")
+print("Success!")

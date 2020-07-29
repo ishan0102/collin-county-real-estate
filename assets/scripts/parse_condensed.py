@@ -8,7 +8,7 @@ def owner_info_condensed():
         write = csv.writer(owner_info, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 
         # write header
-        write.writerow(['account_number', 'legal_description', 'name1', 'address1', 'delinquency_date', 'value', 'amount_due', 'total_amount_due'])
+        write.writerow(['account_number', 'legal_description', 'name1', 'address1', 'value', 'total_amount_due'])
 
         # open text file
         with open('data/raw_txt/owner_info.txt', mode='r') as read:
@@ -21,13 +21,11 @@ def owner_info_condensed():
                 legal_description = record[36:160]
                 name1 = record[334:384]
                 address1 = record[434:484]
-                delinquency_date = record[679:689]
                 value = record[790:801]
-                amount_due = record[823:835]
                 total_amount_due = record[835:847]
 
                 # write row to CSV file
-                write.writerow([account_number, legal_description, name1, address1, delinquency_date, value, amount_due, total_amount_due])
+                write.writerow([account_number, legal_description, name1, address1, value, total_amount_due])
 
 # parse condensed owner taxes into a CSV file
 def owner_taxes_condensed():
