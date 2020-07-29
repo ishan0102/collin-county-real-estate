@@ -2,13 +2,24 @@ import csv
 
 # parse owner information into a CSV file
 def owner_info():
+    # open CSV file
     with open('data/csv/owner_info.csv', mode='w') as owner_info:
         write = csv.writer(owner_info, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 
+        # write header
+        write.writerow(['account_number', 'sptb_code', 'roll_code', 'legal_description', 'acres', 'appraisal_district_number', 'street_name', 
+                        'street_number', 'square_feet', 'lot_size', 'year_built', 'loan_number', 'map_number', 'mapsco_number', 'appraisal_map_number',
+                        'name1', 'name2', 'address1', 'address2', 'city', 'state', 'postal_code', 'start_deferral_date', 'end_deferral_date', 'volume',
+                        'page', 'deed_date', 'exemption_codes', 'delinquency_date', 'tax_unit_codes', 'non_billed_tax_units', 'land_value',
+                        'improvement_value', 'value', 'exemptions', 'levy', 'amount_due', 'total_amount_due'])
+
+        # open text file
         with open('data/raw/owner_info.txt', mode='r') as read:
+            # iterate through text file
             for record in read:
                 record = record.strip()
 
+                # assign variables
                 account_number = record[0:30]
                 sptb_code = record[30:33]
                 roll_code = record[33:36]
@@ -48,6 +59,7 @@ def owner_info():
                 amount_due = record[823:835]
                 total_amount_due = record[835:847]
 
+                # write row to CSV file
                 write.writerow([account_number, sptb_code, roll_code, legal_description, acres, appraisal_district_number, street_name, 
                                 street_number, square_feet, lot_size, year_built, loan_number, map_number, mapsco_number, appraisal_map_number,
                                 name1, name2, address1, address2, city, state, postal_code, start_deferral_date, end_deferral_date, volume,
@@ -56,13 +68,23 @@ def owner_info():
 
 # parse owner taxes into a CSV file
 def owner_taxes():
+    # open CSV file
     with open('data/csv/owner_taxes.csv', mode='w') as owner_taxes:
         write = csv.writer(owner_taxes, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 
+        # write header
+        write.writerow(['account_number', 'year', 'tax_unit_number', 'receivable_type_code', 'sequence_number', 'value', 'exemptions', 'levy',
+                        'amount_due', 'delinquency_date', 'the_3307_date', 'judgment_date', 'suit_number', 'suit_date', 'bankruptcy_number',
+                        'bankruptcy_date', 'status_codes', 'sequence_type_code', 'installment', 'installment_type', 'installment_start_date',
+                        'installment_end_date', 'installment_paid_date'])
+
+        # open text file
         with open('data/raw/owner_taxes.txt', mode='r') as read:
+            # iterate through text file
             for record in read:
                 record = record.strip()
                 
+                # assign variables
                 account_number = record[0:30]
                 year = record[30:34]
                 tax_unit_number = record[34:37]
@@ -87,16 +109,19 @@ def owner_taxes():
                 installment_end_date = record[204:214]
                 installment_paid_date = record[214:224]
 
+                # write row to CSV file
                 write.writerow([account_number, year, tax_unit_number, receivable_type_code, sequence_number, value, exemptions, levy,
                                 amount_due, delinquency_date, the_3307_date, judgment_date, suit_number, suit_date, bankruptcy_number,
                                 bankruptcy_date, status_codes, sequence_type_code, installment, installment_type, installment_start_date,
                                 installment_end_date, installment_paid_date])
 
 if __name__ == "__main__":
+    # parse owner information text file and write rows to CSV file
     print("parsing owner information...")
     owner_info()
     print("finished\n")
 
+    # parse owner taxes text file and write rows to CSV file
     print("parsing owner taxes...")
     owner_taxes()
     print("finished\n")
