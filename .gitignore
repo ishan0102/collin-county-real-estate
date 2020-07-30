@@ -4,3 +4,4 @@ data/filtered_csv
 *.pyc
 tempCodeRunnerFile.py
 .DS_Store
+*.icloud
